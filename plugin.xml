@@ -31,8 +31,8 @@
       </feature>
     </config-file>
 
-    <preference name="ANDROID_FIREBASE_ANALYTICS_VERSION" default="17.4.3"/>
-    <preference name="ANDROID_FIREBASE_CRASHLYTICS_VERSION" default="17.1.0"/>
+    <preference name="ANDROID_FIREBASE_ANALYTICS_VERSION" default="17.6.0"/>
+    <preference name="ANDROID_FIREBASE_CRASHLYTICS_VERSION" default="17.2.2"/>
     <framework src="com.google.firebase:firebase-analytics:$ANDROID_FIREBASE_ANALYTICS_VERSION"/>
     <framework src="com.google.firebase:firebase-crashlytics:$ANDROID_FIREBASE_CRASHLYTICS_VERSION"/>
     <framework src="firebase-crashlytics.gradle" custom="true" type="gradleReference"/>
