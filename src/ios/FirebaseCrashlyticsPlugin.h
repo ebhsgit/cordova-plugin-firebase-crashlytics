@@ -1,5 +1,4 @@
 #import <Cordova/CDVPlugin.h>
-#import <Crashlytics/Crashlytics.h>
 
 @interface FirebaseCrashlyticsPlugin : CDVPlugin <UIAlertViewDelegate>
 
@@ -13,5 +12,6 @@
 - (void)setDouble:(CDVInvokedUrlCommand *)command;
 - (void)setFloat:(CDVInvokedUrlCommand *)command;
 - (void)setUserIdentifier:(CDVInvokedUrlCommand *)command;
+- (void)initialise:(CDVInvokedUrlCommand *)command;
 
 @end
