@@ -4,7 +4,7 @@ package uk.co.reallysmall.cordova.plugin.firebase.crashlytics;
 
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -15,8 +15,6 @@ import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import io.fabric.sdk.android.Fabric;
 
 public class FirebaseCrashlyticsPlugin extends CordovaPlugin {
     static final String TAG = "FBCrashlyticsPlugin";
@@ -35,17 +33,17 @@ public class FirebaseCrashlyticsPlugin extends CordovaPlugin {
         handlers.put("setInt", new SetIntHandler());
         handlers.put("logException", new LogExceptionHandler());
         handlers.put("setUserIdentifier", new SetUserIdentifierHandler());
+        handlers.put("logError", new LogErrorHandler());
+        handlers.put("initialise", new InitialiseHandler());
 
-        Log.d(TAG, "Initializing FBCrashlyticsPlugin");
-
-        Fabric.with(cordova.getActivity(), new Crashlytics());
+        Log.d(TAG, "Initializing FBFirebaseCrashlyticsPlugin");
     }
 
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         Log.d(TAG, action);
 
         if (handlers.containsKey(action)) {
-            return handlers.get(action).handle(args, this.cordova);
+            return handlers.get(action).handle(args, this.cordova, callbackContext);
         }
 
         return false;

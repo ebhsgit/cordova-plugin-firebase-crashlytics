@@ -6,6 +6,11 @@ function Crashlytics() {
 }
 
 Crashlytics.prototype = {
+  initialise: function(hasConsent) {
+    return new Promise(function (resolve, reject) {
+      exec(resolve, reject, PLUGIN_NAME, 'initialise', [hasConsent]);
+    })
+  },
   crash: function() {
     exec(null, null, PLUGIN_NAME, 'crash', []);
   },
@@ -35,7 +40,10 @@ Crashlytics.prototype = {
   },
   setUserIdentifier: function(identifier) {
     exec(null, null, PLUGIN_NAME, 'setUserIdentifier', [identifier]);
-  }
+  },
+  logError: function(message, stackTrace) {
+      exec(null, null, PLUGIN_NAME, 'logError', [message, stackTrace]);
+  },
 };
 
 // Log levels
