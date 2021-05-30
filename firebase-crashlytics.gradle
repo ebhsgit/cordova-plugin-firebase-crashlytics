@@ -15,6 +15,6 @@ allprojects {
     }
 }
 
-ext.postBuildExtras = {
+ext.cdvPluginPostBuildExtras.add({
     apply plugin: com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsPlugin
-}
+})
